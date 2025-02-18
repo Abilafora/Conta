@@ -72,7 +72,7 @@ public class Menu {
 			}
 		
 			
-			if (opcao == 9);{
+			if (opcao == 9){
 				System.out.println(" \nBanco do Brazil com Z - O seu Futuro começa aqui!");
 				sobre();
 				
