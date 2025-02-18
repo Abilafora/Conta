@@ -19,9 +19,9 @@ public class Menu {
 		ContaController contas = new ContaController();
 		
 		
-		int numero,agencia,tipo,aniversario;
+		int numero,agencia,tipo,aniversario,numeroDestino;
 		String titular;
-		float saldo, limite;
+		float saldo, limite,valor;
 		
 		
 		// Teste da Classe ContaCorrete
@@ -42,7 +42,7 @@ public class Menu {
 		
 		
 		while (true){
-			System.out.println(Cores.TEXT_PURPLE_BOLD_BRIGHT + Cores.ANSI_BLACK_BACKGROUND );
+			System.out.println(Cores.TEXT_PURPLE_BOLD_BRIGHT );
 			System.out.println("                                                    ");
 			System.out.println("                BANCO DO BRAZIL COM Z               ");
 			System.out.println("                                                    ");
@@ -198,17 +198,50 @@ public class Menu {
 					break;
 				case 6:
 					System.out.println(Cores.TEXT_PURPLE_BOLD_BRIGHT +"Saque\n");
+					
+					System.out.println("Digite o numero da  Conta: ");
+					numero=leia.nextInt();
+					
+					do {
+						System.out.println("Digite o valor do Saque (R$): ");
+						valor =leia.nextFloat();
+						}while (valor <=0);
+					
+					contas.sacar(numero,valor);
 
 					keyPress();
 					break;
 				case 7:
 					System.out.println(Cores.TEXT_PURPLE_BOLD_BRIGHT +"Depósito\n");
-				
+					
+					System.out.println("\n Digite o número da conta");
+					numero=leia.nextInt();
+					
+					do {
+						System.out.println("Digite o valor que irá depositar (R$):");
+						valor=leia.nextFloat();
+						
+					}while(valor <= 0 );	
+					
+					contas.depositar(numero,valor);
 					keyPress();
 					break;
 				case 8:
 					System.out.println(Cores.TEXT_PURPLE_BOLD_BRIGHT +"Transferência entre Contas\n");
-				
+					
+					System.out.println("\n Digite o número da conta de Origem");
+					numero=leia.nextInt();
+					
+					System.out.println("\n Digite o número de Destino");
+					numeroDestino=leia.nextInt();
+					
+					do {
+						System.out.println("\n Digite o valor de transferencia(R$)");
+						valor= leia.nextFloat();
+						
+					}while (valor <=0);
+					contas.transferir( numeroDestino, opcao, valor);
+					
 					keyPress();
 					break;
 				default:
